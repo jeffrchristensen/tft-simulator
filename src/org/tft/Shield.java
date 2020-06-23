@@ -10,8 +10,11 @@ public class Shield {
     public int getHitsstopped() {
         return hitsstopped;
     }
-
+    public int getDexterityModifier() {
+        return -(hitsstopped - 1);
+    }
     public void displayShield() {
         System.out.print(label + "(" + hitsstopped + ")");
+        System.out.print(" {" + Integer.toString(getDexterityModifier()) + " DX}");
     }
 }

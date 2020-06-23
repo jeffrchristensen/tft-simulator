@@ -49,6 +49,9 @@ public class Character {
         if(armor!=null) {
             dxm += armor.getDexterityModifier();
         }
+        if(shield != null ) {
+            dxm += shield.getDexterityModifier();
+        }
 
         return dxm;
     }

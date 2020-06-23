@@ -37,6 +37,7 @@ public class Run {
     }
 
     public void displayResults() {
+        System.out.println("------------------------------------------------------------------------");
         System.out.println("RUN COUNT: " + Integer.toString(battlecnt));
         character.displayCharacter();
         monster.displayCharacter();
@@ -45,6 +46,7 @@ public class Run {
         System.out.println("TIES=" + Integer.toString(victories_tie));
         int averageduration = rounds_total / battlecnt;
         System.out.println("AVERAGE DURATION=" + Integer.toString(averageduration));
+        System.out.println("------------------------------------------------------------------------");
 
     }
 }
