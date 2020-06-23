@@ -24,12 +24,12 @@ public class Weapon {
         }
     }
 
-    public int generateHits(int hitsavoided) {
-        int hits = hitsavoided;
+    public int generateHits() {
+        int hits = 0;
         for(int i = 0; i < attackdice; i++) {
             hits += Math.max(random.nextInt(6) + 1 + attackdicemodifier,1);
         }
        //System.out.println("hit: " + label + " : " + Integer.toString(hits));
-        return Math.max(hits,0);
+        return hits;
     }
 }

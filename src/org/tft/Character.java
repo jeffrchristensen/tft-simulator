@@ -18,6 +18,7 @@ public class Character {
     Weapon weapon_primary = null;
     Weapon weapon_secondary = null;
     int tohitdxmods = 0;
+    boolean missaturn = false;
 
     int hits = 0;
 
@@ -36,7 +37,7 @@ public class Character {
         hits = 0;
     }
     public void applyHits(int h) {
-        hits += h;
+        hits += Math.max(h - getHitsAvoided() , 0);
     }
 
     public boolean isDead() {
@@ -96,10 +97,15 @@ public class Character {
     }
 
     public void attack(Character enemy) {
+
         if(weapon_basic != null) {
             attackWithWeapon(enemy,weapon_basic,0);
+            missaturn = false;
         } else {
-            if(weapon_primary != null) {
+            if(missaturn) {
+                missaturn = false;
+                return;
+            }           if(weapon_primary != null) {
                 attackWithWeapon(enemy,weapon_primary,0);
             }
             if(weapon_secondary != null) {
@@ -117,20 +123,25 @@ public class Character {
         roll += random.nextInt(6) + 1;
         switch (roll) {
             case 3:
+                enemy.applyHits((weapon.generateHits() + getTohitDmgBonus()) * 3);
                 break;
             case 4:
+                enemy.applyHits((weapon.generateHits() + getTohitDmgBonus()) * 2);
                 break;
             case 5:
+                enemy.applyHits(weapon.generateHits() + getTohitDmgBonus());
                 break;
             case 16:
                 break;
             case 17:
+                missaturn = true;
                 break;
             case 18:
+                missaturn = true;
                 break;
             default:
                 if(roll + dxmod <= getDexterityModified() + enemy.getToavoidDxBonus()) {
-                    enemy.applyHits(weapon.generateHits(getHitsAvoided()) + getTohitDmgBonus());
+                    enemy.applyHits(weapon.generateHits() + getTohitDmgBonus());
                 }
         }
 

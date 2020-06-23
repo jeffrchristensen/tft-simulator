@@ -9,7 +9,7 @@ public class Main {
         Character c = null;
         Character m = null;
 
-        c = new Character(Character.Type.CHARACTER, "Fighter",11,14);
+        c = new Character(Character.Type.CHARACTER, "Fighter",11,11);
         c.setWeapon_primary(new Weapon("Short Sword",2,-1));
         c.setArmor(new Armor("Leather Armor",2));
         c.setShield(new Shield("Small Shield",1));
