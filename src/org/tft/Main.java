@@ -17,28 +17,31 @@ public class Main {
         Shield smallshield = new Shield("Small Shield",1);
         Shield largeshield = new Shield("Large Shield", 2);
 
-        Character c1 = new Character(Character.Type.CHARACTER, "Fighter - Nimble",11,14);
+        int statlow = 10;
+        int stathigh = 13;
+
+        Character c1 = new Character(Character.Type.CHARACTER, "Fighter - Nimble",statlow,stathigh);
         c1.setWeapon_primary(shortsword);
         c1.setArmor(leatherarmor);
         c1.setShield(smallshield);
         c1.setToavoidDxBonus(-1);
         c1.setTohitDmgBonus(1);
 
-        Character c2 = new Character(Character.Type.CHARACTER, "Fighter - Heavy Tank",14,11);
+        Character c2 = new Character(Character.Type.CHARACTER, "Fighter - Heavy Tank",stathigh,statlow);
         c2.setWeapon_primary(bastardsword1h);
         c2.setArmor(chainmail);
         c2.setShield(largeshield);
         c2.setToavoidDxBonus(-1);
         c2.setTohitDmgBonus(1);
 
-        Character c3 = new Character(Character.Type.CHARACTER, "Fighter - Medium Tank",14,11);
+        Character c3 = new Character(Character.Type.CHARACTER, "Fighter - Medium Tank",stathigh,statlow);
         c3.setWeapon_primary(bastardsword1h);
         c3.setArmor(leatherarmor);
         c3.setShield(smallshield);
         c3.setToavoidDxBonus(-1);
         c3.setTohitDmgBonus(1);
 
-        Character c4 = new Character(Character.Type.CHARACTER, "Fighter - Super Heavy Tank",14,11);
+        Character c4 = new Character(Character.Type.CHARACTER, "Fighter - Super Heavy Tank",stathigh,statlow);
         c4.setWeapon_primary(bastardsword2h);
         c4.setArmor(halfplatearmor);
         c4.setToavoidDxBonus(-1);

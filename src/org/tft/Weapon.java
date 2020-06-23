@@ -15,12 +15,16 @@ public class Weapon {
     }
 
     public void displayWeapon() {
-        if(attackdicemodifier != 0) {
+        if(attackdicemodifier < 0) {
             System.out.print(label + " (" +
-                    Integer.toString(attackdice) + "D6(" + Integer.toString(attackdicemodifier) + "))");
+                    Integer.toString(attackdice) + "d" + Integer.toString(attackdicemodifier) + ")");
+        } else if(attackdicemodifier > 0) {
+            System.out.print(label + " (" +
+                    Integer.toString(attackdice) + "d+" + Integer.toString(attackdicemodifier) + ")");
+
         } else {
             System.out.print(label + " (" +
-                    Integer.toString(attackdice) + "D6)");
+                    Integer.toString(attackdice) + "d6)");
         }
     }
 
