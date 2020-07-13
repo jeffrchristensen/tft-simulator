@@ -10,45 +10,50 @@ public class Battle {
     private Character.Type winner = Character.Type.NONE;
     private int duration = 0;
 
+
     public Battle(Character c, Character m) {
         character = c;
         monster = m;
-        character.resetHits();
-        monster.resetHits();
     }
 
     public void doBattle() {
         winner = Character.Type.NONE;
         Random rd = new Random();
-        while (!(character.isDead() || monster.isDead())) {
+        Character.BattleCharacter engchar = character.getBattlecharacter();
+        Character.BattleCharacter engmonst = monster.getBattlecharacter();
+
+        engchar.setEngaged(engmonst);
+        engmonst.setEngaged(engchar);
+
+        while (!(engchar.isDead() || engmonst.isDead())) {
             duration++;
             boolean charinitiative = rd.nextBoolean();
-            Character first = null;
-            Character second = null;
+            Character.BattleCharacter first = null;
+            Character.BattleCharacter second = null;
             if(character.getDexterityModified() > monster.getDexterityModified() ) {
-                first = character;
-                second = monster;
+                first = engchar;
+                second = engmonst;
             } else if (monster.getDexterityModified() > character.getDexterityModified()) {
-                first = monster;
-                second = character;
+                first = engmonst;
+                second = engchar;
             } else if (charinitiative) {
-                first = character;
-                second = monster;
+                first = engchar;
+                second = engmonst;
             } else {
-                first = monster;
-                second = character;
+                first = engmonst;
+                second = engchar;
             }
-            first.attack(second);
+            first.attack();
             if(!second.isDead()) {
-                second.attack(first);
+                second.attack();
                 if(first.isDead()) {
                     // second is winner
-                    winner = second.getType();
+                    winner = second.getCharacter().getType();
                     return;
                 }
             } else {
                 // first is winner
-                winner = first.getType();
+                winner = first.getCharacter().getType();
                 return;
             }
             if(duration > 50) {

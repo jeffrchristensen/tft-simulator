@@ -3,7 +3,7 @@ package org.tft;
 import java.io.*;
 import java.util.Arrays;
 
-public class Run {
+public class BattleRunner {
     private Character character = null;
     private Character monster = null;
     private int battlecnt = 0;
@@ -15,7 +15,7 @@ public class Run {
     int durationcnts[] = new int[50];
 
 
-    public Run(Character c, Character m, int r) {
+    public BattleRunner(Character c, Character m, int r) {
         character = c;
         monster = m;
         battlecnt = r;
